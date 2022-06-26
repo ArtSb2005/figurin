@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block message %}
+{% if messages %}
+<div class="alert none-flex alert-success">
+	{% for message in messages %}
+		{% if message.tags %} {% endif %} {{ message }}
+	{% endfor %}
+</div>
+
+{% endif %}
+
+{% endblock message %}
+{% block content %}
+    <div class="form-p">
+        <form method="POST">
+            <div class="row">
+                {% csrf_token %}
+                {{ form.error }}
+                <div class="col form-floating mb-3">
+                    {{ form.first_name }}
+                </div>
+                <div class="col form-floating mb-3">
+                    {{ form.last_name }}
+                </div>
+                <div class="col form-floating mb-3">
+                    {{ form.email }}
+                </div>
+            </div>
+            <div class="col form-floating mb-3 message-form">
+                {{ form.message }}
+            </div>
+            <div class="row-flex" id="checking">
+                <button type="submit" class="btn btn-primary mr-25">Отправить</button>
+            </div>
+        </form>
+    </div>
+    <script src="{% static 'js/vue_framework.js' %}"></script>
+    <script src="{% static 'js/confidant_validate.js' %}"></script>
+{% endblock content %}

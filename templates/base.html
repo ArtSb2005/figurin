@@ -1,0 +1,57 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta name="viewport" content="width=device-width">
+    <title> Статуэтки  🎎 Lladro и NAO: Испанский винтажный фарфор в Москве 🎠 【интернет магазин лядро】</title>
+    <meta name="keywords" content="lladro статуэтки фарфор nao нао лядро ядро льядро ладро ллядро лладро купить интернет  магазин доставка москва россия испанский винтажные антиквариат коллекционирование авито ангелы клоуны фигурина подарок фигурка lladró">
+    <meta name="description" content="Lladro статуэтки в Москве ➤➤➤ Винтажная фигурка ✔️ Испанский фарфор ❗ интернет магазин NAO ⏳  Доставка по всей России ☝ НАО ⭐ Лядро ⏩ Ядро ➤ Льядро ➤ Купить подарок">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700&display=swap&subset=cyrillic-ext" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
+    <script src="js/data.json"></script>
+    <script src="js/scripts.js"></script>
+    <noscript><div><img src="https://mc.yandex.ru/watch/70338970" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+</head>
+<body>
+<div class="container">
+    <div class="container__commons">
+		<div class="top fl jc-sb">
+			<a href="#submenu" class="menuTrigger">menu</a>
+            <script>
+                $(".menuTrigger").on("click", function() {
+                    $(".menu").toggle();
+                });
+            </script>
+			<div class="top__links fl col">
+				<a href="{% url 'about1' %}" class="top__links-single">О нас</a>
+				<a href="{% url 'about2' %}" class="top__links-single">О Lladro</a>
+				<a href="{% url 'about3' %}" class="top__links-single">О Nao</a>
+			</div>
+			<div class="top__logo">figurina</div>
+			<div class="top__contacts fl col">
+				<p>
+					Москва <span class="greeny">м.</span> Семеновская
+					<i>(доставка по всей России)</i>
+				</p>
+				<a href="https://wa.me/79639626397" class="top__contacts-link1">+7 (963) 962 63 97</a>
+				<a href="https://www.instagram.com/figurina_nao_lladro" class="top__contacts-link2">figurina_nao_lladro</a>
+			</div>
+		</div>
+		<div class="menu fl">
+			<a href="{% url 'index' %}">В каталог</a>
+			<a href="{% url 'avail' %}">В наличии</a>
+			<a href="{% url 'htb' %}">Как купить</a>
+			<a href="{% url 'reviews' %}">Отзывы</a>
+			<a href="{% url 'reservation' %}">Бронь и %</a>
+			<a href="{% url 'delivery' %}">Доставка</a>
+		</div>
+	</div>
+    <main class="main">
+            {% block content %}
+            {% endblock content %}
+    </main>
+</div>
+</body>
+</html>

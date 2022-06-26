@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load poll_extras %}
+{% block content %}
+<div class="instaContent">
+{% for i in medias %}
+    {% if i.pk == object %}
+        <div class="instaItemSingle">
+        <div class="instaItemSingle__text fl">
+            <div class="instaItemSingle__text-block1">
+                <img src="{% current_time i.resources i.pk %}" alt="" id="insta_img">
+                <ul>
+                    <li class="active"></li>
+                </ul>
+            </div>
+            <div class="instaItemSingle__text-block2">
+                <p>{{ i.caption_text|linebreaks }}</p>
+            </div>
+        </div>
+        <div class="instaItemSingle__gallery fl">
+            <div><img src="" alt="" class="photo" id="insta_img"></div>
+			</div>
+		</div>
+	</div>
+	<div class="comments">
+		{% for inf in comment reversed %}
+            <div class="akk">
+            <div class="coms">
+                <div class="ava">
+					<img src="{% user_pic inf.user.profile_pic_url inf.user.username %}" alt="" id="insta_img">
+				</div>
+                <div class="nick">{{ inf.user.username }}</div>
+            </div>
+            <div class="text">{{ inf.text }}</div>
+        </div>
+		{% endfor %}
+	</div>
+
+    {% endif %}
+{% endfor %}
+
+</div>
+{% endblock content %}

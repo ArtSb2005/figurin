@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load poll_extras %}
+{% block content %}
+<div class="container__commons">
+	<div class="instaContent">
+		<ul class="instaItems fl" id="instaItems">
+        <li class="instaItems__single weird1">
+                <div class="imgs">
+                    <img src="{% static 'img/g1.png' %}" alt="">
+                    <img src="{% static 'img/g2.png' %}" alt="">
+                </div>
+                <div class="texts"><span>Lladro и Nao by Lladro </span> – один из лучших мировых брендов по производству фарфоровых скульптур для дома.
+											<br>
+											<br>
+											Многие статуэтки уже не производятся и их можно найти только на антикварных рынках Европы.
+
+											<br>
+											<br>
+											Все статуэтки в идеальном коллеционном состоянии.
+
+											<br>
+											<br>
+											По цене в разы дешевле нового.
+
+											<br>
+											<br>
+											Только оригинал!
+                </div>
+            </li>
+            {% for i in object %}
+                <li class="instaItems__single" id="instaItems__single">
+                <form id="myform" method="post">
+                            {% csrf_token %}
+                    <a onclick="this.parentNode.submit()">
+                        <div class="price">{% price i.caption_text %}</div>
+                    <img class="instaItems__single-image" id="user-avatar" src="{% current_time i.resources i.pk %}">
+                    <img class="instaItems-image" id="user" src="">
+                <div class="instaItems__single-announce" id="{{ i.caption_text }}">
+                    <div>
+                        {{ i.caption_text|linebreaks }}
+
+                            <input type="hidden" name="pk" value="{{ i.pk }}" />
+					</div>
+				</div>
+                        </a>
+                    </form>
+			</li>
+                <script>
+                        var word = $('.instaItems__single-announce').last().attr('id');
+                        var nal = word.includes('#figurina_вналичии');
+                        var tov = word.includes('#');
+                        if (nal == false) {
+
+                            $("[id='instaItems__single']").last().each(function (){
+                                $(this).attr("class", "instaItems__single itemSold");
+                            });
+                        }
+                        if (tov == false) {
+                            $("[id='instaItems__single']").last().each(function (){
+                                $(this).attr("style", "display: none;");
+                            });
+                        }
+                </script>
+            {% endfor %}
+
+
+        </ul>
+    </div>
+</div>
+{% endblock content %}
