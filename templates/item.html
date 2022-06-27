@@ -18,7 +18,10 @@
             </div>
         </div>
         <div class="instaItemSingle__gallery fl">
-            <div><img src="" alt="" class="photo" id="insta_img"></div>
+            {% for a in i.resources|slice:"1:" %}
+                <div><img src="{% img_l a.thumbnail_url a.pk %}" alt="" class="photo" id="insta_img"></div>
+            {% endfor %}
+
 			</div>
 		</div>
 	</div>

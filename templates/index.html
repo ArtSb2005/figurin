@@ -31,21 +31,20 @@
             {% for i in object %}
                 <li class="instaItems__single" id="instaItems__single">
                 <form id="myform" method="post">
-                            {% csrf_token %}
+                    {% csrf_token %}
                     <a onclick="this.parentNode.submit()">
                         <div class="price">{% price i.caption_text %}</div>
                     <img class="instaItems__single-image" id="user-avatar" src="{% current_time i.resources i.pk %}">
                     <img class="instaItems-image" id="user" src="">
-                <div class="instaItems__single-announce" id="{{ i.caption_text }}">
-                    <div>
-                        {{ i.caption_text|linebreaks }}
-
-                            <input type="hidden" name="pk" value="{{ i.pk }}" />
-					</div>
-				</div>
-                        </a>
-                    </form>
-			</li>
+                        <div class="instaItems__single-announce" id="{{ i.caption_text }}">
+                            <div>
+                                {{ i.caption_text|linebreaks }}
+                                <input type="hidden" name="pk" value="{{ i.pk }}" />
+                            </div>
+                        </div>
+                    </a>
+                </form>
+                </li>
                 <script>
                         var word = $('.instaItems__single-announce').last().attr('id');
                         var nal = word.includes('#figurina_вналичии');
@@ -61,6 +60,13 @@
                                 $(this).attr("style", "display: none;");
                             });
                         }
+                        var word1 = $('.instaItems__single .instaItems__single-image').last().attr('src');
+                        if (word1 == 'None') {
+                            $("[id='instaItems__single']").last().each(function (){
+                                $(this).attr("style", "display: none;");
+                            });
+                        }
+                        console.log(word1)
                 </script>
             {% endfor %}
 

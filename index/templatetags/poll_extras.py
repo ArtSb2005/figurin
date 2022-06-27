@@ -55,3 +55,15 @@ def price(text):
                 return '₽' + ' '.join(re.findall(r'❌(.*?)❌', text))
             else:
                 return ''
+
+@register.simple_tag
+def img_l(url, pk):
+    try:
+        name = pk
+        file = open(f'media/list_img/{name}.jpg')
+        return f'media/list_img/{name}.jpg'
+    except:
+        img_data = requests.get(url).content
+        with open(f'media/list_img/{name}.jpg', 'wb') as handler:
+            handler.write(img_data)
+        return f'media/list_img/{name}.jpg'
