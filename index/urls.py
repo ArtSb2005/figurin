@@ -2,7 +2,7 @@ from django.urls import path
 
 from contact.views import ContactCreate
 from index.views import HomePageView, HtbPageView, ReviewsPageView, ReservationPageView, DeliveryPageView, \
-    About1PageView, About2PageView, About3PageView, AvailPageView
+    About1PageView, About2PageView, About3PageView, AvailPageView, KodlerPageView
 
 urlpatterns = [
     path('', HomePageView.as_view(), name='index'),
@@ -18,5 +18,5 @@ urlpatterns = [
     path('about3', About3PageView.as_view(), name='about3'),
 
     path('contact', ContactCreate.as_view(), name='contact'),
-
+    path('kodler', KodlerPageView.as_view(), name='kodler'),
 ]

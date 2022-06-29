@@ -2,11 +2,14 @@
 """Django's command-line utility for administrative tasks."""
 import os
 import sys
+from instagrapi import Client
 
+cl = Client()
+cl.login('nadezhda_timofeeva2474', "Ytp1ID6iOc")
 
 def main():
     """Run administrative tasks."""
-    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'figurin.settings')
+    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'DjangoApp.settings')
     try:
         from django.core.management import execute_from_command_line
     except ImportError as exc:

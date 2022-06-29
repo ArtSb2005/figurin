@@ -93,6 +93,176 @@ textarea {
   width: 95%;
 }
 
+/* картинка на странице */
+.minimized {
+  width: 300px;
+  cursor: pointer;
+  border: 1px solid #FFF;
+}
+
+.minimized:hover {
+  border: 1px solid yellow;
+}
+
+/* увеличенная картинка */
+#magnify {
+  display: none;
+
+  /* position: absolute; upd: 24.10.2016 */
+  position: fixed;
+  max-width: 600px;
+  height: auto;
+  z-index: 9999;
+}
+
+#magnify img {
+  width: 100%;
+}
+
+/* затемняющий фон */
+#overlay {
+  display: none;
+
+  background: #000;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0.5;
+  z-index: 9990;
+}
+
+/* кнопка закрытия */
+#close-popup {
+  width: 30px;
+  height: 30px;
+
+  background: #FFFFFF;
+  border: 1px solid #AFAFAF;
+  border-radius: 15px;
+  cursor: pointer;
+  position: absolute;
+  top: 15px;
+  right: 15px;
+}
+
+/* Собственно сам слайдер */
+.slider{
+    max-width: 90%;
+    position: relative;
+    margin: auto;
+    height: 300px;
+    margin-bottom: 15px;
+}
+/* Картинка мастабируется по отношению к родительскому элементу */
+.slider .item img {
+    object-fit: cover;
+    width: 80%;
+    height: 100%;
+    border: none !important;
+    box-shadow: none !important;
+    margin: 0 auto;
+    display: table;
+}
+/* Кнопки вперед и назад */
+.slider .prev, .slider .next {
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    top: 60%;
+    width: auto;
+    margin-top: -22px;
+    padding: 16px;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+    background-color: rgba(0, 0, 0, 0.8);
+}
+.slider .next {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+}
+/* При наведении на кнопки добавляем фон кнопок */
+.slider .prev:hover,
+.slider .next:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+/* Заголовок слайда */
+.slideText {
+    position: absolute;
+    color: #fff;
+    font-size: 35px;
+    /* Выравнивание текста по горизонтали и по вертикали*/
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    /* Тень*/
+    text-shadow: 1px 1px 1px #000, 0 0 1em #000;
+}
+/* Кружочки */
+.slider-dots {
+    text-align: center;
+}
+.slider-dots_item{
+    cursor: pointer;
+    height: 12px;
+    width: 12px;
+    margin: 0 2px;
+    background-color: #ddd;
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.6s ease;
+}
+.active,
+.slider-dots_item:hover {
+    background-color: #aaa;
+}
+/* Анимация слайдов */
+.slider .item {
+    -webkit-animation-name: fade;
+    -webkit-animation-duration: 1.5s;
+    animation-name: fade;
+    animation-duration: 1.5s;
+}
+@-webkit-keyframes fade {
+    from {
+        opacity: .4
+    }
+    to {
+        opacity: 1
+    }
+}
+@keyframes fade {
+    from {
+        opacity: .4
+    }
+    to {
+        opacity: 1
+    }
+}
+
+
+#close-popup i {
+  width: 30px;
+  height: 30px;
+  background: url(https://codernote.ru/files/cross.png) no-repeat center center;
+  background-size: 16px 16px;
+  display: block;
+}
+
+@keyframes rota {
+ 25% { transform: rotate(360deg); }
+}
+
+#close-popup:hover {
+  animation: rota 4s infinite normal;
+  -webkit-animation-iteration-count: 1;
+  animation-iteration-count: 1;
+}
+
 .btn {
     width: 125px;
     padding: 10px 5px;
@@ -292,8 +462,6 @@ h1 {
       color: #56bc66; }
   .top__logo {
     width: 386px;
-    height: 136px;
-    background: url('../img/figurin.svg') no-repeat;
     display: inline-block;
     text-indent: -10000px;
     overflow: hidden;
@@ -355,7 +523,7 @@ h1 {
       color: #56bc66; }
 
 .instaContent {
-  padding-bottom: 30px; }
+  padding-bottom: 100px; }
 
 .reviewsList {
     padding: 20px 0;
@@ -467,7 +635,7 @@ h1 {
   font-weight: 700;
 }
 .instaItemSingle__gallery {
-  margin: 0 0 20px; }
+  margin: 100px 0 20px;}
   .instaItemSingle__gallery div {
     width: 15.5%;
     margin: 0 6px 10px; }
@@ -495,7 +663,7 @@ h1 {
       text-indent: -10000px;
       overflow: hidden; }
       .instaItemSingle__text-block1 ul li.active {
-        background-color: #56bc66; }
+        /* background-color: #56bc66; */ }
   .instaItemSingle__text-block2 {
     font-size: 18px; }
     .instaItemSingle__text-block2:first-line {
@@ -533,7 +701,7 @@ h1 {
       text-align: center;
       display: block; }
   .instaItemSingle__gallery {
-    display: none; }
+    display: none; margin-top: -100px;position: relative;}
   .instaItemSingle__text {
     margin: 0; }
     .instaItemSingle__text > div {
@@ -583,5 +751,15 @@ h1 {
       max-width: 100%;
       max-height: 100%; }
       .instaItems__single-announce > div p + span {
-        display: none; } }
+        display: none; }
+.instaContent {
+  padding-bottom: 30px; }
 
+.slider .item img {
+    width: 100%;
+}
+
+.slider .prev, .slider .next {
+    top: 50%;
+}
+}

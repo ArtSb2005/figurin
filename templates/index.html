@@ -28,6 +28,26 @@
 											Только оригинал!
                 </div>
             </li>
+           <li class="instaItems__single" id="instaItems__single">
+               <div class="price">₽1600</div>
+               <a href="{% url 'kodler' %}">
+               <img class="instaItems__single-image" id="user-avatar" src="{% static 'img/img.png' %}">
+               <img class="instaItems-image" id="user" src="">
+               <div class="instaItems__single-announce" id="">
+                   <div>
+                       <p>
+                           <b style="font-size: 15px;">Кодлеры на 1 яйцо или на два.</b>
+                       Изготовлены в Англии из жаропрочного фарфора. Royal  Worcester, 1970-1990 года.
+                       В настоящее время не выпускаются. К ним коробки, крючки. Редкие расцветки.
+                       У нас одни из самых низких цен на кодлеры.
+                       Все они уже находятся в Москве и не надо переплачивать за доставку из Англии.
+                       Цены одни из самых низких в России!
+                       </p>
+                       <input type="hidden" name="pk" value="{{ i.pk }}" />
+                   </div>
+               </div>
+               </a>
+           </li>
             {% for i in object %}
                 <li class="instaItems__single" id="instaItems__single">
                 <form id="myform" method="post">
@@ -48,14 +68,14 @@
                 <script>
                         var word = $('.instaItems__single-announce').last().attr('id');
                         var nal = word.includes('#figurina_вналичии');
-                        var tov = word.includes('#');
+                        var tov = word.includes('#figurinanons');
                         if (nal == false) {
 
                             $("[id='instaItems__single']").last().each(function (){
                                 $(this).attr("class", "instaItems__single itemSold");
                             });
                         }
-                        if (tov == false) {
+                        if (tov == true) {
                             $("[id='instaItems__single']").last().each(function (){
                                 $(this).attr("style", "display: none;");
                             });
@@ -69,8 +89,6 @@
                         console.log(word1)
                 </script>
             {% endfor %}
-
-
         </ul>
     </div>
 </div>

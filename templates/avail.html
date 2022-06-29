@@ -49,8 +49,15 @@
                 <script>
                         var word = $('.instaItems__single-announce').last().attr('id');
                         var nal = word.includes('#figurina_вналичии');
-                        var tov = word.includes('#');
-                        if (nal == false) {
+                        var tov = word.includes('#figurinanons');
+
+                        if (tov == true) {
+                            $("[id='instaItems__single']").last().each(function (){
+                                $(this).attr("style", "display: none;");
+                            });
+                        }
+                        var word1 = $('.instaItems__single .instaItems__single-image').last().attr('src');
+                        if (word1 == 'None') {
                             $("[id='instaItems__single']").last().each(function (){
                                 $(this).attr("style", "display: none;");
                             });

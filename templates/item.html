@@ -8,10 +8,14 @@
         <div class="instaItemSingle">
         <div class="instaItemSingle__text fl">
             <div class="instaItemSingle__text-block1">
-                <img src="{% current_time i.resources i.pk %}" alt="" id="insta_img">
-                <ul>
-                    <li class="active"></li>
-                </ul>
+                <div class="slider">
+                    {% for a in i.resources %}
+                        <div class="item">
+                            <img src="{% img_l a.thumbnail_url a.pk %}" class="minimized" alt="Первый слайд">
+                        </div>
+                    {% endfor %}
+                    <a class="prev" onclick="minusSlide()">&#10094;</a><a class="next" onclick="plusSlide()">&#10095;</a>
+                </div>
             </div>
             <div class="instaItemSingle__text-block2">
                 <p>{{ i.caption_text|linebreaks }}</p>
@@ -19,7 +23,7 @@
         </div>
         <div class="instaItemSingle__gallery fl">
             {% for a in i.resources|slice:"1:" %}
-                <div><img src="{% img_l a.thumbnail_url a.pk %}" alt="" class="photo" id="insta_img"></div>
+                <div><img src="{% img_l a.thumbnail_url a.pk %}" alt="" class="photo minimized" id="insta_img"></div>
             {% endfor %}
 
 			</div>
@@ -43,4 +47,64 @@
 {% endfor %}
 
 </div>
+    <script>
+    $(function(){
+  $('.minimized').click(function(event) {
+    var i_path = $(this).attr('src');
+    $('body').append('<div id="overlay"></div><div id="magnify"><img src="'+i_path+'"><div id="close-popup"><i></i></div></div>');
+    $('#magnify').css({
+     left: ($(document).width() - $('#magnify').outerWidth())/2,
+     // top: ($(document).height() - $('#magnify').outerHeight())/2 upd: 24.10.2016
+            top: ($(window).height() - $('#magnify').outerHeight())/2
+   });
+    $('#overlay, #magnify').fadeIn('fast');
+  });
+
+  $('body').on('click', '#close-popup, #overlay', function(event) {
+    event.preventDefault();
+    $('#overlay, #magnify').fadeOut('fast', function() {
+      $('#close-popup, #magnify, #overlay').remove();
+    });
+  });
+});
+/* Индекс слайда по умолчанию */
+var slideIndex = 1;
+showSlides(slideIndex);
+
+/* Функция увеличивает индекс на 1, показывает следующй слайд*/
+function plusSlide() {
+    showSlides(slideIndex += 1);
+}
+
+/* Функция уменьшяет индекс на 1, показывает предыдущий слайд*/
+function minusSlide() {
+    showSlides(slideIndex -= 1);
+}
+
+/* Устанавливает текущий слайд */
+function currentSlide(n) {
+    showSlides(slideIndex = n);
+}
+
+/* Основная функция слайдера */
+function showSlides(n) {
+    var i;
+    var slides = document.getElementsByClassName("item");
+    var dots = document.getElementsByClassName("slider-dots_item");
+    if (n > slides.length) {
+      slideIndex = 1
+    }
+    if (n < 1) {
+        slideIndex = slides.length
+    }
+    for (i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+    }
+    for (i = 0; i < dots.length; i++) {
+        dots[i].className = dots[i].className.replace(" active", "");
+    }
+    slides[slideIndex - 1].style.display = "block";
+    dots[slideIndex - 1].className += " active";
+}
+</script>
 {% endblock content %}

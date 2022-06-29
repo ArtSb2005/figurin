@@ -54,3 +54,6 @@ class About2PageView(TemplateView):
 
 class About3PageView(TemplateView):
     template_name = 'about3.html'
+
+class KodlerPageView(TemplateView):
+    template_name = 'kodler.html'

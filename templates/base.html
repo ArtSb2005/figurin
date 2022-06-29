@@ -7,6 +7,7 @@
     <meta name="keywords" content="lladro статуэтки фарфор nao нао лядро ядро льядро ладро ллядро лладро купить интернет  магазин доставка москва россия испанский винтажные антиквариат коллекционирование авито ангелы клоуны фигурина подарок фигурка lladró">
     <meta name="description" content="Lladro статуэтки в Москве ➤➤➤ Винтажная фигурка ✔️ Испанский фарфор ❗ интернет магазин NAO ⏳  Доставка по всей России ☝ НАО ⭐ Лядро ⏩ Ядро ➤ Льядро ➤ Купить подарок">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <link rel="icon" href="{% static 'img/fav.png' %}">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700&display=swap&subset=cyrillic-ext" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
     <script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
@@ -29,7 +30,7 @@
 				<a href="{% url 'about2' %}" class="top__links-single">О Lladro</a>
 				<a href="{% url 'about3' %}" class="top__links-single">О Nao</a>
 			</div>
-			<div class="top__logo">figurina</div>
+			<a href="{% url 'index' %}"><img class="top__logo" src="{% static 'img/figurin.png' %}"></a>
 			<div class="top__contacts fl col">
 				<p>
 					Москва <span class="greeny">м.</span> Семеновская
